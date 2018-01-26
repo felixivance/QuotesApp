@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{quoteGroup?.category | uppercase}}</ion-title>
+    <!-- question mark is to render it if its available if not to ignore it ie {{quoteGroup?.category | uppercase}}-->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let quote of quoteGroup.quotes; let i = index">
+    <ion-card-header>
+      #{{i+1}}
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{quote.text}}</p>
+      <p class="author">{{quote.person}}</p> 
+      <ion-row>
+        <ion-col text-right *ngIf="!isFavorite(quote)"> <!--add width property to take a cetain withd -->
+          <button ion-button clear small (click)="addToFavorite(quote)" >Favorite</button>
+        </ion-col>
+        <ion-col text-right *ngIf="isFavorite(quote)"> <!--add width property to take a cetain width -->
+          <button ion-button clear small color="danger" (click)="removeFromFavorites(quote)" >Unfavorite</button>
+        </ion-col>
+      </ion-row> 
+    </ion-card-content>      
+  </ion-card>
+</ion-content>

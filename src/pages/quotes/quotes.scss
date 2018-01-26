@@ -1,0 +1,17 @@
+page-quotes {
+ .author{
+     color: #ccc;
+     text-align: right;
+     text-transform: uppercase;
+     padding: 0;
+     margin:0;
+    //  using scss feature
+    &:before{
+        content:'~'
+    }
+ }
+//  ii apa imekua replaced na io code ya using scss feature
+//  .author:before{
+//      content:'-';
+//  }
+}

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <!-- menu -->
+    <!--use ion-buttons to group buttons in the nav area -->
+       
+    <!-- <ion-buttons start> 
+    </ion-buttons> -->
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Favorite Quotes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>Favorites</ion-list-header>
+    <!-- show delete button if user slides the list-->
+    <ion-item-sliding *ngFor="let quote of quotes">
+        <ion-item  (click)="viewQuote(quote)" [color]="getBackground()">
+            <h2>{{quote.person}}</h2>
+            <p>{{quote.text}}</p>
+          </ion-item>
+          <!-- used together with ion-item options -->
+          <ion-item-options> 
+              <button ion-button color="danger" (click)="removeFromFavorites(quote)"><ion-icon name="trash"></ion-icon> Delete </button>
+          </ion-item-options>
+    </ion-item-sliding>
+    
+  </ion-list>
+</ion-content>
